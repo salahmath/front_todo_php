@@ -14,12 +14,12 @@ function TodoApp() {
   // Charger les todos lors du premier rendu
   useEffect(() => {
     axios
-      .get(`http://localhost/React-Php-todo/backend/api/GetTodoUser.php?userId=${isLoggedIn}`)
+      .get(`http://tdos.kesug.com/backend/api/GetTodoUser.php?userId=${isLoggedIn}`)
       .then((response) => {
         setTodos(response.data);
       });
       axios
-      .get(`http://localhost/React-Php-todo/backend/api/GetUser.php?id=${isLoggedIn}`)
+      .get(`http://tdos.kesug.com/backend/api/GetUser.php?id=${isLoggedIn}`)
       .then((response) => {
         setUser(response.data[0].username); // Mettre à jour l'état avec le todo récupéré
       });
@@ -38,7 +38,7 @@ function TodoApp() {
 
     // Ajouter la tâche via l'API
     axios
-      .post("http://localhost/React-Php-todo/backend/api/AddTodo.php", { title: task ,userId:isLoggedIn })
+      .post("http://tdos.kesug.com/backend/api/AddTodo.php", { title: task ,userId:isLoggedIn })
       .then((response) => {
         // Vérifier la réponse pour éviter des tâches vides
         if (response.data) {
@@ -58,7 +58,7 @@ function TodoApp() {
   const deleteTodo = (id) => {
     // Supprimer la tâche via l'API
     axios
-      .delete(`http://localhost/React-Php-todo/backend/api/DelTodo.php?id=${id}`)
+      .delete(`http://tdos.kesug.com/backend/api/DelTodo.php?id=${id}`)
       .then((response) => {
         // Mettre à jour l'état sans la tâche supprimée directement
         setTodos(todos.filter((todo) => todo.id !== id));
@@ -75,7 +75,7 @@ function TodoApp() {
   // Récupérer les détails d'un todo
   const getTodo = (id) => {
     axios
-      .get(`http://localhost/React-Php-todo/backend/api/GetTodo.php?id=${id}`)
+      .get(`http://tdos.kesug.com/backend/api/GetTodo.php?id=${id}`)
       .then((response) => {
         setTodo(response.data[0]); // Mettre à jour l'état avec le todo récupéré
       });
@@ -86,7 +86,7 @@ function TodoApp() {
   const updateTodo = () => {
     // Make an update request to the API
     axios
-      .put("http://localhost/React-Php-todo/backend/api/UpdateTodo.php", {
+      .put("http://tdos.kesug.com/backend/api/UpdateTodo.php", {
         id: todo.id,
         title: todo.title
       })

@@ -12,7 +12,7 @@ function Register() {
 
   const register = () => {
     axios
-      .post("http://localhost/React-Php-todo/backend/api/Register.php", {
+      .post("http://tdos.kesug.com/backend/api/Register.php", {
         username,
         email,
         password,
